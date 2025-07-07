@@ -20,7 +20,9 @@ jobs:
 
       - name: 读取版本号
         id: get_version
-        run: echo "version=$(node -p \"require('./package.json').version\")" >> $GITHUB_OUTPUT
+        run: |
+          VERSION=$(node -p 'require("./package.json").version')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: 创建 Release
         uses: softprops/action-gh-release@v2

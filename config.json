@@ -1,0 +1,20 @@
+{
+  "variables": [
+    {
+      "name": "test1",
+      "value": "Success"
+    },
+    {
+      "name": "test2",
+      "value": "12345"
+    },
+    {
+      "name": "test3",
+      "value": "!@#$%^&*()_-+=\\|}{][`~?/><.,\"':;"
+    },
+    {
+      "name": "test4",
+      "value": "😊😂🤣👌👍"
+    }
+  ]
+}

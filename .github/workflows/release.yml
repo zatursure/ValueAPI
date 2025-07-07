@@ -24,6 +24,12 @@ jobs:
           VERSION=$(node -p 'require("./package.json").version')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
+      - name: 打包项目
+        run: |
+          mkdir dist
+          cp -r ./* dist/
+          rm -rf dist/.git dist/.github
+
       - name: 创建 Release
         uses: softprops/action-gh-release@v2
         with:
@@ -32,6 +38,6 @@ jobs:
           body: |
             ValueAPI by Zatursure
           files: |
-            /*
+            dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

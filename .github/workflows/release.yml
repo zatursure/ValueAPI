@@ -26,19 +26,17 @@ jobs:
 
       - name: 打包项目
         run: |
-          mkdir dist
-          shopt -s extglob
-          cp -r !(dist) dist/
-          rm -rf dist/.git dist/.github
+          tar -czvf valueapi-release.tar.gz . --exclude=./.git --exclude=./.github --exclude=./node_modules
 
       - name: 创建 Release
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: v${{ steps.get_version.outputs.version }}
+          tag: v${{ steps.get_version.outputs.version }}
           name: Release v${{ steps.get_version.outputs.version }}
           body: |
             ValueAPI by Zatursure
-          files: |
-            dist/*
+          artifacts: valueapi-release.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            dist/*

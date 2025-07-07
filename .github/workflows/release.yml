@@ -26,7 +26,7 @@ jobs:
 
       - name: 打包项目
         run: |
-          tar -czvf valueapi-release.tar.gz . --exclude=./.git --exclude=./.github --exclude=./node_modules
+          tar -czvf valueapi-release.tar.gz . --exclude=./.git --exclude=./.github
 
       - name: 创建 Release
         uses: ncipollo/release-action@v1

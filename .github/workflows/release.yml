@@ -27,7 +27,8 @@ jobs:
       - name: 打包项目
         run: |
           mkdir dist
-          cp -r ./* dist/
+          shopt -s extglob
+          cp -r !(dist) dist/
           rm -rf dist/.git dist/.github
 
       - name: 创建 Release

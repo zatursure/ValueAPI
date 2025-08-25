@@ -1,0 +1,15 @@
+{
+  "tokens": [
+    {
+      "name": "Default",
+      "token": "123213213",
+      "remark": "默认令",
+      "isDefault": true
+    }
+  ],
+  "settings": {
+    "historyLimit": 1000,
+    "pageSize": 50,
+    "allowNewToken": true
+  }
+}

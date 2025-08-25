@@ -8,10 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const TOKEN = process.env.TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const adminSesList = {};
 app.use(cookieParser());
 
 app.get(['/.env', '/config.json'], (req, res) => {
-    res.status(403).send('Forbidden');
+    res.status(403).send('扫你🐎呢');
 });
 
 const adminSes = new Set();
@@ -21,7 +22,6 @@ function createSession() {
     return sid;
 }
 
-const adminSesList = {};
 function getSession(req, res) {
     let sid = req.cookies && req.cookies.captcha_sid;
     if (!sid || !adminSesList[sid]) {
@@ -58,15 +58,13 @@ function saveConfig(config) {
         cacheMtime = fs.statSync(configPath).mtimeMs;
         return true;
     } catch (err) {
-        console.error('保存 config.json 失败:', err);
+        console.error('保存配置失败:', err);
         return false;
     }
 }
 
 // 读取config.json
-function getSettings() {
-    return loadConfig().variables;
-}
+function getSettings() { return loadConfig().variables; }
 
 function log(level, message) {
     const now = new Date();
